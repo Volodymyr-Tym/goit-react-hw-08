@@ -1,0 +1,32 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #a0a0a0;
+
+  font-weight: 500;
+  color: inherit;
+
+  transition: background-color 250ms linear, border 250ms linear;
+  &:hover {
+    border: 1px solid #111111;
+    background-color: #7c7c7c;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 6px;
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+::placeholder {
+  color: #11111166;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.h1_title {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  padding: 16px;
+  margin-bottom: 32px;
+  border: 2px solid #afafaf;
+  border-radius: 12px;
+  box-shadow: 3px 3px 4px 0px rgba(131, 131, 131, 1);
+}
