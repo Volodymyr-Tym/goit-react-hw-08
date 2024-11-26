@@ -1,19 +1,21 @@
-import { useSelector } from 'react-redux';
-
-import { selectIsError } from '../../redux/contacts/selectors';
-
 import styles from './Error.module.css';
 
-const Error = () => {
-  const isError = useSelector(selectIsError);
+const Error = ({ error }) => {
+  const handleCloseClick = event => {
+    event.target.parentNode.style.visibility = 'hidden';
+  };
 
   return (
     <div className={styles.wrap}>
       <p className={styles.title}>Oooops something went wrong...</p>
       <p className={styles.message}>
         {' '}
-        Reason: <span>{isError}</span>
+        Reason: <span>{error}</span>
       </p>
+      <p className={styles.message}>Please check details and try again</p>
+      <button className={styles.close} type="button" onClick={handleCloseClick}>
+        X
+      </button>
     </div>
   );
 };

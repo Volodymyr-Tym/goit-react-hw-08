@@ -42,7 +42,7 @@ const ContactsPage = () => {
       {Array.isArray(contacts) && contacts.length > 0 && <ContactList />}
 
       {isLoading && <Loader />}
-      {isError && <Error />}
+      {isError && <Error error={isError} />}
     </div>
   );
 };

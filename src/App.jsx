@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import { refreshUser } from './redux/auth/operations';
-import { selectUserDataisRefreshing } from './redux/auth/selectors';
+import {
+  selectUserDataisRefreshing,
+  selectUserDataToken,
+} from './redux/auth/selectors';
 
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
@@ -21,11 +24,14 @@ const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
 function App() {
   const dispatch = useDispatch();
+  const isUserToken = useSelector(selectUserDataToken);
   const isRefreshing = useSelector(selectUserDataisRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isUserToken) {
+      return;
+    } else dispatch(refreshUser());
+  }, [dispatch, isUserToken]);
 
   return isRefreshing ? (
     <Loader />
