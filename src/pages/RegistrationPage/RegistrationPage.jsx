@@ -4,7 +4,11 @@ import styles from './RegistrationPage.module.css';
 
 const RegistrationPage = () => {
   return (
-    <div>
+    <div className={styles.wrap}>
+      <h2 className={styles.title}>
+        Please fill in this form to create an account.
+      </h2>
+
       <RegistrationForm />
     </div>
   );

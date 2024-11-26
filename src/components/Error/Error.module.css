@@ -1,9 +1,9 @@
 .wrap {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
+  padding: 12px 20px;
   row-gap: 10px;
   justify-content: center;
-  padding: 10px 15px;
   border: 1px solid #111111;
   border-radius: 8px;
   margin-bottom: 20px;

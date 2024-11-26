@@ -1,0 +1,13 @@
+.title {
+  padding: 10px 0;
+  margin-bottom: 8px;
+}
+
+.operations {
+  display: flex;
+  padding: 16px;
+  margin-bottom: 32px;
+  border: 2px solid #afafaf;
+  border-radius: 12px;
+  box-shadow: 3px 3px 4px 0px rgba(131, 131, 131, 1);
+}

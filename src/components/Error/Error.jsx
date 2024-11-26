@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import { error } from '../../redux/selectors';
+
+import { selectIsError } from '../../redux/contacts/selectors';
 
 import styles from './Error.module.css';
 
 const Error = () => {
-  const isError = useSelector(error);
+  const isError = useSelector(selectIsError);
 
   return (
     <div className={styles.wrap}>

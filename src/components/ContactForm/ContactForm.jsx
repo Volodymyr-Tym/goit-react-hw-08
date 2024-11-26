@@ -1,8 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { AddContactSchema } from '../../utils/schemas';
-
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { AiOutlineUserAdd } from 'react-icons/ai';
+
+import { addContact } from '../../redux/contacts/operations';
+import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './ContactForm.module.css';
 
@@ -53,7 +54,7 @@ const ContactForm = () => {
             className={styles.input}
             type="text"
             name="number"
-            placeholder="000-000-0000"
+            placeholder="000-00-00"
           ></Field>
 
           <ErrorMessage
@@ -65,6 +66,7 @@ const ContactForm = () => {
 
         <button className={styles.btn} type="submit">
           Add contact
+          <AiOutlineUserAdd className={styles.ico} />
         </button>
       </Form>
     </Formik>

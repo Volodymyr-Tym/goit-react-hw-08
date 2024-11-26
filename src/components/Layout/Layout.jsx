@@ -5,7 +5,7 @@ import Loader from '../Loader/Loader';
 
 import styles from './Layout.module.css';
 
-export const Layout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className={styles.wrap}>
       <AppBar />
@@ -13,3 +13,5 @@ export const Layout = ({ children }) => {
     </div>
   );
 };
+
+export default Layout;

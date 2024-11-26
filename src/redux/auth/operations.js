@@ -1,16 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { registerUser } from '../../api/auth';
+import {
+  clearToken,
+  getCurrentUser,
+  loginUser,
+  logoutUser,
+  registerUser,
+  setToken,
+} from '../../api/auth';
 
-export const apiRegister = createAsyncThunk(
+export const register = createAsyncThunk(
   'auth/register',
   async (formData, thunkApi) => {
     try {
       const data = await registerUser(formData);
-      // "name": "Adrian Cross",
-      // "email": "across@mail.com",
-      // "password": "examplepwd12345"
-      console.log('data->', data);
+      setToken(data.token);
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -18,38 +23,50 @@ export const apiRegister = createAsyncThunk(
   }
 );
 
-// export const apiLogin = createAsyncThunk('auth/login', async (_, thunkApi) => {
-//   try {
-//     const data = await getContacts(_);
+export const login = createAsyncThunk(
+  'auth/login',
+  async (userData, thunkApi) => {
+    try {
+      const data = await loginUser(userData);
+      setToken(data.token);
 
-//     return data;
-//   } catch (error) {
-//     return thunkApi.rejectWithValue(error.message);
-//   }
-// });
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-// export const apiLogout = createAsyncThunk(
-//   'auth/logout',
-//   async (_, thunkApi) => {
-//     try {
-//       const data = await getContacts(_);
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
 
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
+    if (!token) {
+      return thunkApi.rejectWithValue('There is no token to refresh');
+    }
 
-// export const apiRefreshUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkApi) => {
-//     try {
-//       const data = await getContacts(_);
+    try {
+      setToken(token);
 
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
+      const data = await getCurrentUser(_);
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
+  try {
+    const data = await logoutUser(_);
+
+    clearToken();
+
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});

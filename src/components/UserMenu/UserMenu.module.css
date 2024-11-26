@@ -1,0 +1,43 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  font-size: 18px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.ico {
+  width: 30px;
+  height: 30px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #ea8c9d;
+  border-radius: 5px;
+  background-color: rgb(161, 216, 238);
+
+  color: #f06982;
+  font-size: 20px;
+
+  transition: filter 250ms linear;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  outline: transparent;
+  filter: drop-shadow(0px 0px 5px #ea8c9d);
+}

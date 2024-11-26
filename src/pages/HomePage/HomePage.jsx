@@ -2,12 +2,16 @@ import styles from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>
-        Wellcome to <span>Your Private Electronic Phone book (YPEP) </span>
+    <div className={styles.wrap}>
+      <h1 className={styles.main_title}>
+        Wellcome to{' '}
+        <span className={styles.accent}>
+          Your Private Electronic Phone book{' '}
+        </span>
         application!
       </h1>
-      <p>
+
+      <p className={styles.descr}>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit.
         Exercitationem, incidunt. A molestias ad illum reiciendis fugiat quo
         quos qui accusantium tenetur, asperiores iusto cum, molestiae laborum

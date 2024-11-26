@@ -10,11 +10,6 @@
   font-weight: 500;
 }
 
-.h1_title {
-  font-size: 35px;
-  margin-bottom: 20px;
-}
-
 .wrapper {
   display: flex;
   padding: 16px;

@@ -1,8 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { BiSolidUser } from 'react-icons/bi';
 import { MdOutlinePhoneIphone } from 'react-icons/md';
+import { AiOutlineUserDelete } from 'react-icons/ai';
 
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '../../redux/contacts/operations';
 
 import styles from './Contact.module.css';
 
@@ -24,12 +25,12 @@ const Contact = ({ user }) => {
     <>
       <div className={styles.details}>
         <p className={styles.info}>
-          <BiSolidUser className={styles.icon} />
+          <BiSolidUser className={styles.ico} />
           {nameFormater(name)}
         </p>
 
         <p className={styles.info}>
-          <MdOutlinePhoneIphone className={styles.icon} />
+          <MdOutlinePhoneIphone className={styles.ico} />
           {number}
         </p>
       </div>
@@ -39,7 +40,7 @@ const Contact = ({ user }) => {
         className={styles.btn}
         type="button"
       >
-        Delete
+        <AiOutlineUserDelete className={styles.ico_delete} />
       </button>
     </>
   );

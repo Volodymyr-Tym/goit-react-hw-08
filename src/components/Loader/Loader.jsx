@@ -1,4 +1,5 @@
 import { RingLoader } from 'react-spinners';
+
 import styles from './Loader.module.css';
 
 const Loader = () => {

@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import { RiLoginBoxLine } from 'react-icons/ri';
+import { FiUserPlus } from 'react-icons/fi';
+import clsx from 'clsx';
 
 import styles from './AuthNav.module.css';
-import clsx from 'clsx';
 
 const AuthNav = () => {
   const linkClass = ({ isActive }) =>
@@ -9,11 +11,14 @@ const AuthNav = () => {
 
   return (
     <div className={styles.wrap}>
-      <NavLink className={linkClass} to="/register">
-        Register
-      </NavLink>
       <NavLink className={linkClass} to="/login">
-        Log In
+        Login
+        <RiLoginBoxLine />
+      </NavLink>
+
+      <NavLink className={linkClass} to="/register">
+        Sign Up
+        <FiUserPlus />
       </NavLink>
     </div>
   );

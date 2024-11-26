@@ -5,6 +5,7 @@
 
 .link {
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: 10px 14px;
   border: 1px solid #ea8c9d;
@@ -15,11 +16,8 @@
   font-size: 20px;
 
   transition: filter 250ms linear, color 250ms linear, background 250ms linear;
-
-  &:first-child {
-    margin-left: 16px;
-  }
 }
+
 .link:hover,
 .link:focus-visible {
   outline: transparent;

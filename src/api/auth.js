@@ -17,3 +17,21 @@ export const registerUser = async formData => {
 
   return data;
 };
+
+export const loginUser = async userData => {
+  const { data } = await authInstance.post('/users/login', userData);
+
+  return data;
+};
+
+export const getCurrentUser = async () => {
+  const { data } = await authInstance.get('/users/current');
+
+  return data;
+};
+
+export const logoutUser = async () => {
+  const { data } = await authInstance.post('/users/logout');
+
+  return data;
+};

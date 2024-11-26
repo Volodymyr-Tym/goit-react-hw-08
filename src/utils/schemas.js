@@ -1,10 +1,10 @@
 import * as Yup from 'yup';
 
-const NumberRegex = /^\s*\d{3}-\d{3}-\d{4}\s*$/gm;
+const NumberRegex = /^\s*\d{3}-\d{2}-\d{2}\s*$/gm;
 
 const EmailRegex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
 
-const PasswordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/gm;
+const PasswordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*\W)(?!.* ).{7,16}$/gm;
 
 export const AddContactSchema = Yup.object({
   name: Yup.string()
@@ -14,7 +14,7 @@ export const AddContactSchema = Yup.object({
 
   number: Yup.string()
     .required('Number is required')
-    .matches(NumberRegex, 'Required format: XXX-XXX-XXXX'),
+    .matches(NumberRegex, 'Required format: XXX-XX-XX'),
 });
 
 export const RegisterUserSchema = Yup.object({
@@ -32,7 +32,24 @@ export const RegisterUserSchema = Yup.object({
   password: Yup.string()
     .trim()
     .required('Password is required')
-    .min(8, 'Password must be at least 8 symbols')
+    .min(7, 'Password must be at least 7 symbols')
+    .max(16, 'Password must be up to 16 symbols')
+    .matches(
+      PasswordRegex,
+      'Password must contain at least one digit, uppercase letter and one special character'
+    ),
+});
+
+export const LoginUserSchema = Yup.object({
+  email: Yup.string()
+    .trim()
+    .required('Email is required')
+    .matches(EmailRegex, 'Required format: example@gmail.com'),
+
+  password: Yup.string()
+    .trim()
+    .required('Password is required')
+    .min(7, 'Password must be at least 7 symbols')
     .max(16, 'Password must be up to 16 symbols')
     .matches(
       PasswordRegex,

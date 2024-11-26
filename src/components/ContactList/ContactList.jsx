@@ -1,7 +1,8 @@
+import { useSelector } from 'react-redux';
+
 import Contact from '../Contact/Contact';
 
-import { useSelector } from 'react-redux';
-import { selectFilteredContacts } from '../../redux/selectors';
+import { selectFilteredContacts } from '../../redux/contacts/selectors';
 
 import styles from './ContactList.module.css';
 
@@ -10,7 +11,7 @@ const ContactList = () => {
 
   return (
     <>
-      {filteredContacts.length === 0 && <h3>Your contact list is empty</h3>}
+      {filteredContacts.length === 0 && <h3>There is on matches</h3>}
 
       <ul className={styles.user_list}>
         {Array.isArray(filteredContacts) &&
