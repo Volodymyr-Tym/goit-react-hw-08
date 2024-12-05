@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { IoMailOutline } from 'react-icons/io5';
+import { SlLock } from 'react-icons/sl';
 
 import { login } from '../../redux/auth/operations';
 import { LoginUserSchema } from '../../utils/schemas';
 
 import styles from './LoginForm.module.css';
+import StyledBtn from '../StyledBtn/StyledBtn';
 
 const LoginForm = () => {
   const INITIAL_VALUES = { email: '', password: '' };
@@ -30,43 +33,64 @@ const LoginForm = () => {
       validationSchema={LoginUserSchema}
     >
       <Form className={styles.form}>
+        <h3 className={styles.form_title}>
+          Please enter your details to log in to your account.
+        </h3>
+
         <label className={styles.label}>
-          <span className={styles.label_title}>Email</span>
+          <IoMailOutline className={styles.input_ico} />
 
-          <Field
-            className={styles.input}
-            type="text"
-            name="email"
-            placeholder="Enter your email"
-          ></Field>
+          <div className={styles.input_wrap}>
+            <Field
+              className={styles.input}
+              type="text"
+              name="email"
+              placeholder="Email"
+            ></Field>
+          </div>
 
-          <ErrorMessage
-            className={styles.message}
-            name="email"
-            component="span"
-          />
+          <div className={styles.tooltip_gap}>
+            <ErrorMessage
+              className={styles.message}
+              name="email"
+              component="span"
+            />
+            {console.log('<ErrorMessage>', { ErrorMessage })}
+          </div>
         </label>
 
         <label className={styles.label}>
-          <span className={styles.label_title}>Password</span>
+          <SlLock className={styles.input_ico} />
 
-          <Field
-            className={styles.input}
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-          ></Field>
+          <div className={styles.input_wrap}>
+            <Field
+              className={styles.input}
+              type="password"
+              name="password"
+              placeholder="Password"
+            ></Field>
+          </div>
 
-          <ErrorMessage
-            className={styles.message}
-            name="password"
-            component="span"
-          />
+          <div className={styles.tooltip_gap}>
+            <ErrorMessage
+              className={`${styles.message} ${styles.pwd_message}`}
+              name="password"
+              component="span"
+            />
+            <div className={styles.tooltip}>
+              <ul>
+                {' '}
+                <p>Password must contain:</p>
+                <li>~ lower case letter (a-z)</li>
+                <li>~ upper case letter (A-Z)</li>
+                <li>~ digit (0-9)</li>
+                <li>~ special character (!@#$%^&*)</li>
+              </ul>
+            </div>
+          </div>
         </label>
 
-        <button className={styles.btn} type="submit">
-          Sign in
-        </button>
+        <StyledBtn name="Sign in" type="submit" />
       </Form>
     </Formik>
   );

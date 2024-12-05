@@ -1,0 +1,30 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: transparent;
+
+  color: #fafafa;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 250ms linear;
+}
+.link:hover,
+.link:focus-visible {
+  outline: transparent;
+  background-color: rgba(255, 100, 200, 0.5);
+  box-shadow: inset 0 0 3px rgb(0, 0, 0), inset 0 0 6px rgba(0, 0, 0, 0.8),
+    0 0 3px rgb(0, 0, 0, 0.8);
+}
+
+.active_link {
+  background-color: rgba(255, 100, 200, 0.8);
+  box-shadow: inset 0 0 4px rgb(0, 0, 0), inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 0 5px rgb(0, 0, 0, 0.8);
+  color: #111111;
+  font-weight: 500;
+
+  transition: all 250ms linear;
+}

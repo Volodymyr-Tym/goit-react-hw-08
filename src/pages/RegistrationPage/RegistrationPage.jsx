@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
-import Error from '../../components/Error/Error';
+
+import Container from '../../components/Container/Container';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import Error from '../../components/Error/Error';
 
 import { selectUserDataIsError } from '../../redux/auth/selectors';
 
@@ -10,15 +12,13 @@ const RegistrationPage = () => {
   const isError = useSelector(selectUserDataIsError);
 
   return (
-    <div className={styles.wrap}>
-      <h2 className={styles.title}>
-        Please fill in this form to create an account.
-      </h2>
+    <Container className={styles.register_container}>
+      <h2 className={styles.title}>Create account</h2>
 
       <RegistrationForm />
 
       {isError && <Error error={isError} />}
-    </div>
+    </Container>
   );
 };
 

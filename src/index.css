@@ -1,9 +1,19 @@
 @import './reset.css';
 
+body {
+  min-height: 100vh;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  background-color: #dce4ff;
+  background-image: linear-gradient(
+    to bottom left,
+    #ff76f8 10%,
+    #7636ff 30%,
+    #7d32ba 70%,
+    #ffabf8 90%
+  );
 }

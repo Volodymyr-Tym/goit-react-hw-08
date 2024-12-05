@@ -17,6 +17,7 @@ const UserMenu = () => {
         <p>
           Welcome, <span className={styles.name}>{user.name}</span>
         </p>
+
         <FaRegCircleUser className={styles.ico} />
       </div>
 

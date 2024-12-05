@@ -25,19 +25,20 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 14px;
-  border: 1px solid #ea8c9d;
-  border-radius: 5px;
-  background-color: rgb(161, 216, 238);
+  padding: 8px 12px;
+  border: 1px solid #6b6b6b;
+  border-radius: 4px;
+  background-color: transparent;
 
-  color: #f06982;
-  font-size: 20px;
+  color: #fafafa;
+  /* font-size: 20px; */
 
-  transition: filter 250ms linear;
+  transition: filter 250ms linear, background-color 250ms linear;
 }
 
 .btn:hover,
 .btn:focus-visible {
   outline: transparent;
   filter: drop-shadow(0px 0px 5px #ea8c9d);
+  background-color: rgba(234, 140, 157, 0.5);
 }

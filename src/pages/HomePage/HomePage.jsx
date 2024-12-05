@@ -1,8 +1,15 @@
+import Container from '../../components/Container/Container';
+
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <div className={styles.wrap}>
+    <Container className={styles.home_container}>
+      <img
+        className={styles.logo}
+        src="../../../logo_128px.png"
+        alt="Your Private Electronic Phone book logo"
+      />
       <h1 className={styles.main_title}>
         Wellcome to{' '}
         <span className={styles.accent}>
@@ -11,15 +18,14 @@ const HomePage = () => {
         application!
       </h1>
 
-      <p className={styles.descr}>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Exercitationem, incidunt. A molestias ad illum reiciendis fugiat quo
-        quos qui accusantium tenetur, asperiores iusto cum, molestiae laborum
-        eveniet consequuntur nobis! Magni repellat nostrum consequuntur in
-        nobis. Voluptas, ullam, delectus incidunt cumque inventore, vero
-        necessitatibus optio vitae in distinctio possimus quo quae!
-      </p>
-    </div>
+      <div className={styles.descr}>
+        <p>
+          Our app offers you an additional private contact list that you can
+          access from any device.
+        </p>
+        <p className={styles.p2}>Safe and simple!</p>
+      </div>
+    </Container>
   );
 };
 

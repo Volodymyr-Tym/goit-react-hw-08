@@ -51,8 +51,5 @@ export const LoginUserSchema = Yup.object({
     .required('Password is required')
     .min(7, 'Password must be at least 7 symbols')
     .max(16, 'Password must be up to 16 symbols')
-    .matches(
-      PasswordRegex,
-      'Password must contain at least one digit, uppercase letter and one special character'
-    ),
+    .matches(PasswordRegex, 'Password must contain:...'),
 });
