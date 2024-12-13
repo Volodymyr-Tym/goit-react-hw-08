@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
@@ -15,23 +16,40 @@ import {
 import { getContacts } from '../../redux/contacts/operations';
 
 import styles from './ContactsPage.module.css';
+import Container from '../../components/Container/Container';
+import StyledBtn from '../../components/StyledBtn/StyledBtn';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
 
+  const onNewContactHandleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
-      <h2 className={styles.title}>Phone book</h2>
+    <Container className={styles.contacts_container}>
+      <h2 className={styles.title}>Contacts</h2>
 
       <div className={styles.operations}>
-        <ContactForm />
+        <StyledBtn big onClick={onNewContactHandleClick}>
+          New contact
+          <AiOutlineUserAdd className={styles.add_ico} />
+        </StyledBtn>
+
+        <div className={`${styles.modal_wrap} ${isOpen ? styles.open : ''}`}>
+          <div className={styles.modal}>
+            <ContactForm />
+          </div>
+        </div>
+
         <SearchBox />
       </div>
 
@@ -43,7 +61,7 @@ const ContactsPage = () => {
 
       {isLoading && <Loader />}
       {isError && <Error error={isError} />}
-    </div>
+    </Container>
   );
 };
 

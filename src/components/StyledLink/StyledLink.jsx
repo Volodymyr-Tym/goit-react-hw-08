@@ -1,18 +1,16 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
 import styles from './StyledLink.module.css';
 
-const StyledLink = ({ to, children, useNavLink = true }) => {
-  const Component = useNavLink ? NavLink : Link;
-
+const StyledLink = ({ to, children, showActive = true }) => {
   const linkClass = ({ isActive }) =>
-    clsx(styles.link, isActive && styles.active_link);
+    clsx(styles.outline_link, isActive && styles.outline_link_active);
 
   return (
-    <Component to={to} className={linkClass}>
+    <NavLink to={to} className={showActive ? linkClass : styles.outline_link}>
       {children}
-    </Component>
+    </NavLink>
   );
 };
 

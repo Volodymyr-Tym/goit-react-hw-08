@@ -10,6 +10,7 @@ import { selectUserDataIsLoggedIn } from '../../redux/auth/selectors';
 
 import { clsx } from 'clsx';
 import styles from './AppBar.module.css';
+import { Link } from 'react-router-dom';
 
 const AppBar = () => {
   const isLoggedIn = useSelector(selectUserDataIsLoggedIn);
@@ -31,8 +32,22 @@ const AppBar = () => {
   return (
     <header className={headerClass}>
       <Container className={styles.header_container}>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        <div className={styles.menu}>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </div>
+
+        <div className={styles.mob_menu}>
+          <Link className={styles.link} to={'/'}>
+            <img
+              className={styles.logo}
+              src="../../../logo_128px.png"
+              alt="Logo"
+            />
+          </Link>
+
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </div>
       </Container>
     </header>
   );

@@ -1,6 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import { addContact } from '../../redux/contacts/operations';
 import { AddContactSchema } from '../../utils/schemas';
@@ -66,7 +65,6 @@ const ContactForm = () => {
 
         <button className={styles.btn} type="submit">
           Add contact
-          <AiOutlineUserAdd className={styles.ico} />
         </button>
       </Form>
     </Formik>

@@ -90,7 +90,7 @@ const LoginForm = () => {
           </div>
         </label>
 
-        <StyledBtn name="Sign in" type="submit" />
+        <StyledBtn type="submit">Sign in</StyledBtn>
       </Form>
     </Formik>
   );

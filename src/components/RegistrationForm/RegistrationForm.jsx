@@ -112,7 +112,7 @@ const RegistrationForm = () => {
           </div>
         </label>
 
-        <StyledBtn name="Sign up" type="submit" />
+        <StyledBtn type="submit">Sign up</StyledBtn>
       </Form>
     </Formik>
   );
