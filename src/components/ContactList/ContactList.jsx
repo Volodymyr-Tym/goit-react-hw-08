@@ -11,13 +11,15 @@ const ContactList = () => {
 
   return (
     <>
-      {filteredContacts.length === 0 && <h3>There is on matches</h3>}
+      {filteredContacts.length === 0 && (
+        <h3 className={styles.no_matches}>There is on matches</h3>
+      )}
 
-      <ul className={styles.user_list}>
+      <ul className={styles.contact_list}>
         {Array.isArray(filteredContacts) &&
           filteredContacts.map(user => {
             return (
-              <li className={styles.user_card} key={user.id}>
+              <li className={styles.contact_card} key={user.id}>
                 <Contact user={user} />
               </li>
             );

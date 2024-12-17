@@ -16,23 +16,23 @@ const SearchBox = () => {
   };
 
   return (
-    <div>
+    <div className={styles.search_wrap}>
+      <h3 className={styles.search_title}>Find contacts by name or number</h3>
+
       <label className={styles.label}>
-        <span className={styles.label_title}>
-          Find contacts by name or number
-        </span>
+        <ImSearch className={styles.input_ico} />
 
-        <input
-          onChange={event => {
-            handleChange(event.target.value);
-          }}
-          className={styles.input}
-          type="text"
-          value={filter}
-          placeholder="Start typing..."
-        />
-
-        <ImSearch className={styles.ico} />
+        <div className={styles.input_wrap}>
+          <input
+            onChange={event => {
+              handleChange(event.target.value);
+            }}
+            className={styles.input}
+            type="text"
+            value={filter}
+            placeholder="Start typing..."
+          />
+        </div>
       </label>
     </div>
   );

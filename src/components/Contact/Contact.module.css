@@ -4,37 +4,80 @@
   row-gap: 8px;
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background-color: #a0a0a0;
-
-  font-weight: 500;
-  color: inherit;
-
-  transition: background-color 250ms linear, border 250ms linear;
-  &:hover {
-    border: 1px solid #111111;
-    background-color: #7c7c7c;
-  }
-}
-
-.info {
+.info_wrap {
   display: flex;
   align-items: center;
 }
 
 .ico {
   margin-right: 6px;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+
+  color: #bebebe;
+}
+
+.text {
+  font-size: 18px;
+  max-width: 210px;
+  text-wrap: nowrap;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 40px;
+  max-width: 40px;
+  padding: 0 4px;
+  width: 100%;
+  height: 100%;
+  border: none;
+
+  background-color: rgba(125, 17, 62, 0.5);
+
+  color: #a10707;
+  font-weight: 500;
+  /* font-size: 30px; */
+
+  transition: all 250ms linear, max-width 350ms linear;
+  &:hover,
+  &:focus {
+    outline: transparent;
+    background-color: rgba(123, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    max-width: 100%;
+    justify-content: center;
+
+    font-size: 30px;
+  }
 }
 
 .ico_delete {
+  flex-shrink: 0;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 0px 0px 7px rgba(255, 0, 0, 1);
+
+  transition: transform 250ms linear;
+}
+
+.btn:hover > .ico_delete,
+.btn:focus > .ico_delete {
+  transform: scale(1.5);
+}
+
+.delete_btn_text {
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 0 0 0 rgba(218, 0, 0, 0.5);
 }

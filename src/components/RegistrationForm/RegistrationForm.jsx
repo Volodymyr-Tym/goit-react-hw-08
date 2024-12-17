@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { GoPerson } from 'react-icons/go';
 import { IoMailOutline } from 'react-icons/io5';
 import { SlLock } from 'react-icons/sl';
 
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
         </h3>
 
         <label className={styles.label}>
-          <BsFillPersonLinesFill className={styles.input_ico} />
+          <GoPerson className={styles.input_ico} />
 
           <div className={styles.input_wrap}>
             <Field

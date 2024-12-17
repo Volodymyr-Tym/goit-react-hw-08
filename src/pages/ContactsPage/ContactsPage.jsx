@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AiOutlineUserAdd } from 'react-icons/ai';
+import { FaAngleDown } from 'react-icons/fa6';
 
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
@@ -17,47 +17,71 @@ import { getContacts } from '../../redux/contacts/operations';
 
 import styles from './ContactsPage.module.css';
 import Container from '../../components/Container/Container';
-import StyledBtn from '../../components/StyledBtn/StyledBtn';
+// import StyledBtn from '../../components/StyledBtn/StyledBtn';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  const [isFindOpen, setIsFindOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
 
-  const onNewContactHandleClick = () => {
-    setIsOpen(!isOpen);
+  const onAddHandleClick = () => {
+    setIsAddOpen(!isAddOpen);
+  };
+
+  const onFindHandleClick = () => {
+    setIsFindOpen(!isFindOpen);
   };
 
   return (
     <Container className={styles.contacts_container}>
       <h2 className={styles.title}>Contacts</h2>
 
-      <div className={styles.operations}>
-        <StyledBtn big onClick={onNewContactHandleClick}>
-          New contact
-          <AiOutlineUserAdd className={styles.add_ico} />
-        </StyledBtn>
+      <div className={styles.acc_wrap}>
+        <button
+          className={`${styles.acc_btn} ${isAddOpen ? styles.opened : ''}`}
+          type="button"
+          onClick={onAddHandleClick}
+        >
+          Add contact
+          <FaAngleDown className={styles.acc_btn_ico} />
+        </button>
 
-        <div className={`${styles.modal_wrap} ${isOpen ? styles.open : ''}`}>
-          <div className={styles.modal}>
+        <div className={`${styles.acc} ${isAddOpen ? styles.opened : ''}`}>
+          <div className={styles.acc_item}>
             <ContactForm />
           </div>
         </div>
 
-        <SearchBox />
+        <button
+          className={`${styles.acc_btn} ${isFindOpen ? styles.opened : ''}`}
+          type="button"
+          onClick={onFindHandleClick}
+        >
+          Find contact
+          <FaAngleDown className={styles.acc_btn_ico} />
+        </button>
+
+        <div className={`${styles.acc} ${isFindOpen ? styles.opened : ''}`}>
+          <div className={styles.acc_item}>
+            <SearchBox />
+          </div>
+        </div>
       </div>
 
-      {Array.isArray(contacts) && contacts.length === 0 && (
-        <h3>Your contact list is empty</h3>
-      )}
+      <div className={styles.list_wrap}>
+        {Array.isArray(contacts) && contacts.length === 0 && (
+          <h3 className={styles.no_contacts}>Your contact list is empty</h3>
+        )}
 
-      {Array.isArray(contacts) && contacts.length > 0 && <ContactList />}
+        {Array.isArray(contacts) && contacts.length > 0 && <ContactList />}
+      </div>
 
       {isLoading && <Loader />}
       {isError && <Error error={isError} />}

@@ -24,15 +24,17 @@ const Contact = ({ user }) => {
   return (
     <>
       <div className={styles.details}>
-        <p className={styles.info}>
+        <div className={styles.info_wrap}>
           <BiSolidUser className={styles.ico} />
-          {nameFormater(name)}
-        </p>
+          <p className={`${styles.text} ${styles.name}`}>
+            {nameFormater(name)}
+          </p>
+        </div>
 
-        <p className={styles.info}>
+        <div className={styles.info_wrap}>
           <MdOutlinePhoneIphone className={styles.ico} />
-          {number}
-        </p>
+          <p className={styles.text}>{number}</p>
+        </div>
       </div>
 
       <button
@@ -41,6 +43,7 @@ const Contact = ({ user }) => {
         type="button"
       >
         <AiOutlineUserDelete className={styles.ico_delete} />
+        <span className={styles.delete_btn_text}>Delete</span>
       </button>
     </>
   );

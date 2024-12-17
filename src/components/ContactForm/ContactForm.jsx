@@ -1,10 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import { GoPerson } from 'react-icons/go';
+import { CiPhone } from 'react-icons/ci';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import { addContact } from '../../redux/contacts/operations';
 import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './ContactForm.module.css';
+import StyledBtn from '../StyledBtn/StyledBtn';
 
 const ContactForm = () => {
   const INITIAL_VALUES = { name: '', number: '' };
@@ -29,43 +33,53 @@ const ContactForm = () => {
       validationSchema={AddContactSchema}
     >
       <Form className={styles.form}>
+        <h3 className={styles.form_title}>Enter new contact details</h3>
+
         <label className={styles.label}>
-          <span className={styles.label_title}>Name</span>
+          <GoPerson className={styles.input_ico} />
 
-          <Field
-            className={styles.input}
-            type="text"
-            name="name"
-            placeholder="John Smith"
-          ></Field>
+          <div className={styles.input_wrap}>
+            <Field
+              className={styles.input}
+              type="text"
+              name="name"
+              placeholder="Name"
+            ></Field>
+          </div>
 
-          <ErrorMessage
-            className={styles.message}
-            name="name"
-            component="span"
-          />
+          <div className={styles.tooltip_gap}>
+            <ErrorMessage
+              className={styles.message}
+              name="name"
+              component="span"
+            />
+          </div>
         </label>
 
         <label className={styles.label}>
-          <span className={styles.label_title}>Number</span>
+          <CiPhone className={styles.input_ico} />
 
-          <Field
-            className={styles.input}
-            type="text"
-            name="number"
-            placeholder="000-00-00"
-          ></Field>
+          <div className={styles.input_wrap}>
+            <Field
+              className={styles.input}
+              type="text"
+              name="number"
+              placeholder="Phone number"
+            ></Field>
+          </div>
 
-          <ErrorMessage
-            className={styles.message}
-            name="number"
-            component="span"
-          />
+          <div className={styles.tooltip_gap}>
+            <ErrorMessage
+              className={styles.message}
+              name="number"
+              component="span"
+            />
+          </div>
         </label>
 
-        <button className={styles.btn} type="submit">
-          Add contact
-        </button>
+        <StyledBtn type="submit" addClassName={styles.add_btn}>
+          <AiOutlineUserAdd className={styles.add_ico} />
+        </StyledBtn>
       </Form>
     </Formik>
   );

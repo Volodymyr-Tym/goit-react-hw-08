@@ -9,6 +9,7 @@ const StyledBtn = ({
   big,
   type = 'button',
   onClick,
+  id,
 }) => {
   const classOpts = () => {
     if (className) return `${className}`;
@@ -19,7 +20,7 @@ const StyledBtn = ({
   const btnClass = clsx(classOpts(), big && styles.big);
 
   return (
-    <button className={btnClass} type={type} onClick={onClick}>
+    <button className={btnClass} type={type} onClick={onClick} id={id}>
       {children}
     </button>
   );
