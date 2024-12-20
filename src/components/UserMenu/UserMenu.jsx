@@ -23,9 +23,8 @@ const UserMenu = () => {
 
   const user = useSelector(selectUserData);
 
-  // ----------------------------
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = anchorEl;
+  const open = Boolean(anchorEl);
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -33,8 +32,6 @@ const UserMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // ----------------------------
 
   return (
     <div className={styles.wrap}>
