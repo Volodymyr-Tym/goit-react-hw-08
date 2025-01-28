@@ -1,5 +1,8 @@
-/* .wrap {
-} */
+.wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
 
 .img {
   width: 30px;

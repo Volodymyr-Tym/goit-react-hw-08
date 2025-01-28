@@ -1,0 +1,79 @@
+.account_container {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cur_user {
+  margin-bottom: 20px;
+  width: 250px;
+  height: 250px;
+  background-color: rgba(255, 100, 200, 0.8);
+  border-radius: 50%;
+  box-shadow: inset 0 0 15px rgb(0, 0, 0), inset 0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 8px rgb(0, 0, 0);
+
+  font-size: 150px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.info_list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  border-top: 1px solid rgba(255, 100, 200, 0.8);
+  border-bottom: 1px solid rgba(255, 100, 200, 0.8);
+}
+
+.info_item {
+  display: flex;
+  align-items: baseline;
+  padding: 8px;
+
+  font-size: 20px;
+}
+
+.info_name {
+  width: 100px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.data {
+  font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
+  .cur_user {
+    margin-bottom: 28px;
+    width: 300px;
+    height: 300px;
+
+    font-size: 200px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .account_container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info {
+    flex-direction: row;
+    column-gap: 100px;
+  }
+}

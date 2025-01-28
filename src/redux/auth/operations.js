@@ -47,6 +47,7 @@ export const refreshUser = createAsyncThunk(
       setToken(token);
 
       const data = await getCurrentUser(_);
+      console.log('userData', data);
 
       return data;
     } catch (error) {

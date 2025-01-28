@@ -12,6 +12,8 @@ const Navigation = () => {
       <StyledLink to={'/'}>Home</StyledLink>
 
       {isLoggedIn && <StyledLink to={'/contacts'}>Contacts</StyledLink>}
+
+      {isLoggedIn && <StyledLink to={'/account'}>My account</StyledLink>}
     </nav>
   );
 };

@@ -2,10 +2,15 @@ import { useDispatch } from 'react-redux';
 import { BiSolidUser } from 'react-icons/bi';
 import { MdOutlinePhoneIphone } from 'react-icons/md';
 import { AiOutlineUserDelete } from 'react-icons/ai';
+import { LiaUserEditSolid } from 'react-icons/lia';
 
 import { deleteContact } from '../../redux/contacts/operations';
 
 import styles from './Contact.module.css';
+import { Modal } from '@mui/material';
+import { useState } from 'react';
+import EditContactForm from '../EditContactForm/EditContactForm';
+import Container from '../Container/Container';
 
 const Contact = ({ user }) => {
   const { name, number, id } = user;
@@ -17,9 +22,19 @@ const Contact = ({ user }) => {
     else return fullName.slice(0, 20).padEnd(23, '.');
   };
 
+  const onEditHandleClick = () => {
+    // dispatch(editContact(id));
+    handleOpenModal();
+    console.log(id, name, number);
+  };
+
   const onDeleteHandleClick = () => {
     dispatch(deleteContact(id));
   };
+
+  const [modalIsOpen, setmodalIsOpen] = useState(false);
+  const handleOpenModal = () => setmodalIsOpen(true);
+  const handleCloseModal = () => setmodalIsOpen(false);
 
   return (
     <>
@@ -37,14 +52,47 @@ const Contact = ({ user }) => {
         </div>
       </div>
 
-      <button
-        onClick={onDeleteHandleClick}
-        className={styles.btn}
-        type="button"
+      <div className={styles.btn_wrap}>
+        <button
+          onClick={onEditHandleClick}
+          className={`${styles.btn} ${styles.edit_btn}`}
+          type="button"
+        >
+          <LiaUserEditSolid
+            className={`${styles.btn_ico} ${styles.ico_edit}`}
+          />
+          <span className={styles.btn_text}>Edit</span>
+        </button>
+
+        <button
+          onClick={onDeleteHandleClick}
+          className={`${styles.btn} ${styles.delete_btn}`}
+          type="button"
+        >
+          <AiOutlineUserDelete
+            className={`${styles.btn_ico} ${styles.ico_delete}`}
+          />
+          <span className={styles.btn_text}>Delete</span>
+        </button>
+      </div>
+
+      {/* <div className={styles.modal}></div> */}
+      <Modal
+        className={styles.modal}
+        open={modalIsOpen}
+        onClose={handleCloseModal}
       >
-        <AiOutlineUserDelete className={styles.ico_delete} />
-        <span className={styles.delete_btn_text}>Delete</span>
-      </button>
+        <Container className={styles.modal_container}>
+          <button
+            className={styles.close_btn}
+            type="button"
+            onClick={handleCloseModal}
+          >
+            X
+          </button>
+          <EditContactForm contact={user} />
+        </Container>
+      </Modal>
     </>
   );
 };

@@ -54,7 +54,6 @@ const LoginForm = () => {
               name="email"
               component="span"
             />
-            {console.log('<ErrorMessage>', { ErrorMessage })}
           </div>
         </label>
 
@@ -76,16 +75,6 @@ const LoginForm = () => {
               name="password"
               component="span"
             />
-            <div className={styles.tooltip}>
-              <ul>
-                {' '}
-                <p>Password must contain:</p>
-                <li>~ lower case letter (a-z)</li>
-                <li>~ upper case letter (A-Z)</li>
-                <li>~ digit (0-9)</li>
-                <li>~ special character (!@#$%^&*)</li>
-              </ul>
-            </div>
           </div>
         </label>
 

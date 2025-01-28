@@ -7,7 +7,7 @@ import { TiContacts } from 'react-icons/ti';
 import { selectUserData } from '../../redux/auth/selectors';
 import { logout } from '../../redux/auth/operations';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { Link } from 'react-router-dom';
 import {
@@ -17,50 +17,59 @@ import {
   menuWrapStyles,
 } from '../../utils/customStyles';
 import styles from './UserMenu.module.css';
+import StyledBtn from '../StyledBtn/StyledBtn';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUserData);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const [anchorElBurger, setAnchorElBurger] = useState(null);
+
+  const handleOpenBurgerMenu = event => {
+    setAnchorElBurger(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleCloseBurgerMenu = () => {
+    setAnchorElBurger(null);
   };
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    if (width > 767) {
+      if (anchorElBurger) {
+        setAnchorElBurger(null);
+      }
+    }
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [width, anchorElBurger]);
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.menu}>
+    <div>
+      <div className={styles.user_menu}>
         <div className={styles.greeting}>
           <p>
             Welcome, <span className={styles.name}>{user.name}</span>
           </p>
 
-          <FaRegCircleUser className={styles.ico} />
+          <StyledBtn onClick={() => dispatch(logout())}>Logout</StyledBtn>
         </div>
-
-        <button
-          className={styles.btn}
-          type="button"
-          onClick={() => dispatch(logout())}
-        >
-          Logout
-          <RiLogoutBoxLine />
-        </button>
       </div>
 
       <div className={styles.mob_menu}>
         <Button
           id="burger-menu-button"
-          aria-controls={open ? 'burger-menu' : null}
+          aria-controls={anchorElBurger ? 'burger-menu' : null}
+          aria-hidden="false"
           aria-haspopup="true"
-          aria-expanded={open ? 'true' : null}
-          onClick={handleClick}
+          aria-expanded={anchorElBurger ? 'true' : null}
+          onClick={handleOpenBurgerMenu}
           sx={menuBurgerStyles}
         >
           <RiMenu3Fill className={styles.ico_burger} />
@@ -68,10 +77,11 @@ const UserMenu = () => {
 
         <Menu
           id="burger-menu"
+          className={styles.my_menu}
           aria-labelledby="burger-menu-button"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+          anchorEl={anchorElBurger}
+          open={Boolean(anchorElBurger)}
+          onClose={handleCloseBurgerMenu}
           anchorOrigin={{
             vertical: 40,
             horizontal: -120 + 35,
@@ -91,19 +101,25 @@ const UserMenu = () => {
             },
           }}
         >
-          <MenuItem onClick={handleClose} sx={menuItemStyles}>
+          <MenuItem onClick={handleCloseBurgerMenu} sx={menuItemStyles}>
             <Link to={'/contacts'} className={styles.burger_link}>
               <TiContacts />
               Contacts
             </Link>{' '}
           </MenuItem>
 
-          <MenuItem onClick={handleClose} sx={menuItemStyles} divider={true}>
-            <FaRegCircleUser />
-            My account
+          <MenuItem
+            onClick={handleCloseBurgerMenu}
+            sx={menuItemStyles}
+            divider={true}
+          >
+            <Link to={'/account'} className={styles.burger_link}>
+              <FaRegCircleUser />
+              My account
+            </Link>{' '}
           </MenuItem>
 
-          <MenuItem onClick={handleClose} sx={menuItemStyles}>
+          <MenuItem onClick={() => dispatch(logout())} sx={menuItemStyles}>
             <RiLogoutBoxLine />
             Logout
           </MenuItem>

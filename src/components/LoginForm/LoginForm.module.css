@@ -31,7 +31,6 @@
   flex-direction: column;
   align-items: center;
   row-gap: 4px;
-  /* margin-bottom: 100px; */
 }
 
 .input_ico {
@@ -115,7 +114,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 14px;
   font-weight: 500;
-  color: #ae0e0e;
+  color: #820303;
 
   &:hover {
     cursor: pointer;
@@ -168,4 +167,38 @@
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(-5px);
+}
+
+@media screen and (min-width: 1280px) {
+  .form_title {
+    margin-bottom: 24px;
+
+    font-size: 24px;
+  }
+
+  .form {
+    max-width: 500px;
+  }
+
+  .input_ico {
+    left: 5px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .input {
+    padding-left: 45px;
+    height: 45px;
+
+    font-size: 20px;
+  }
+
+  .input::placeholder {
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 16px;
+    color: #820303;
+  }
 }
