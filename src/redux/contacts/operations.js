@@ -4,6 +4,7 @@ import {
   deleteContactById,
   getAllContacts,
   postNewContact,
+  updateContactById,
 } from '../../api/contacts';
 
 export const getContacts = createAsyncThunk(
@@ -42,6 +43,21 @@ export const deleteContact = createAsyncThunk(
       const data = await deleteContactById(contactId);
 
       console.log('delContact->data->', data);
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  async ({ contactId, updatedData }, thunkApi) => {
+    try {
+      const data = await updateContactById(contactId, updatedData);
+
+      console.log('UpdatedContact->data->', data);
 
       return data;
     } catch (error) {

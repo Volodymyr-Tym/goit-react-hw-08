@@ -2,15 +2,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { GoPerson } from 'react-icons/go';
 import { CiPhone } from 'react-icons/ci';
-import { AiOutlineUserAdd } from 'react-icons/ai';
 
-import { addContact, updateContact } from '../../redux/contacts/operations';
+import { updateContact } from '../../redux/contacts/operations';
 import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './EditContactForm.module.css';
 import StyledBtn from '../StyledBtn/StyledBtn';
 
-const EditContactForm = ({ contact }) => {
+const EditContactForm = ({ contact, handleCloseModal }) => {
   const INITIAL_VALUES = {
     name: `${contact.name}`,
     number: `${contact.number}`,
@@ -24,8 +23,9 @@ const EditContactForm = ({ contact }) => {
       number: values.number.trim(),
     };
 
-    dispatch(updateContact(contact.id, updatedData));
-    console.log('ID=>', contact.id, 'UDATA=>', updatedData);
+    dispatch(updateContact({ contactId: contact.id, updatedData }));
+
+    handleCloseModal();
   };
 
   return (

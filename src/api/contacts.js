@@ -17,3 +17,12 @@ export const deleteContactById = async contactId => {
 
   return data;
 };
+
+export const updateContactById = async (contactId, updatedData) => {
+  const { data } = await authInstance.patch(
+    `/contacts/${contactId}`,
+    updatedData
+  );
+
+  return data;
+};

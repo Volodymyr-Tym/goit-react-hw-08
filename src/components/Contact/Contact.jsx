@@ -23,9 +23,7 @@ const Contact = ({ user }) => {
   };
 
   const onEditHandleClick = () => {
-    // dispatch(editContact(id));
     handleOpenModal();
-    console.log(id, name, number);
   };
 
   const onDeleteHandleClick = () => {
@@ -90,7 +88,7 @@ const Contact = ({ user }) => {
           >
             X
           </button>
-          <EditContactForm contact={user} />
+          <EditContactForm contact={user} handleCloseModal={handleCloseModal} />
         </Container>
       </Modal>
     </>
