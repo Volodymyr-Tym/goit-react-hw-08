@@ -41,50 +41,52 @@ const ContactsPage = () => {
 
   return (
     <Container className={styles.contacts_container}>
-      <h2 className={styles.title}>Contacts</h2>
+      <div className={styles.section}>
+        <h2 className={styles.title}>Contacts</h2>
 
-      <div className={styles.acc_wrap}>
-        <button
-          className={`${styles.acc_btn} ${isAddOpen ? styles.opened : ''}`}
-          type="button"
-          onClick={onAddHandleClick}
-        >
-          Add contact
-          <FaAngleDown className={styles.acc_btn_ico} />
-        </button>
+        <div className={styles.acc_wrap}>
+          <button
+            className={`${styles.acc_btn} ${isAddOpen ? styles.opened : ''}`}
+            type="button"
+            onClick={onAddHandleClick}
+          >
+            Add contact
+            <FaAngleDown className={styles.acc_btn_ico} />
+          </button>
 
-        <div className={`${styles.acc} ${isAddOpen ? styles.opened : ''}`}>
-          <div className={styles.acc_item}>
-            <ContactForm />
+          <div className={`${styles.acc} ${isAddOpen ? styles.opened : ''}`}>
+            <div className={styles.acc_item}>
+              <ContactForm />
+            </div>
+          </div>
+
+          <button
+            className={`${styles.acc_btn} ${isFindOpen ? styles.opened : ''}`}
+            type="button"
+            onClick={onFindHandleClick}
+          >
+            Find contact
+            <FaAngleDown className={styles.acc_btn_ico} />
+          </button>
+
+          <div className={`${styles.acc} ${isFindOpen ? styles.opened : ''}`}>
+            <div className={styles.acc_item}>
+              <SearchBox />
+            </div>
           </div>
         </div>
 
-        <button
-          className={`${styles.acc_btn} ${isFindOpen ? styles.opened : ''}`}
-          type="button"
-          onClick={onFindHandleClick}
-        >
-          Find contact
-          <FaAngleDown className={styles.acc_btn_ico} />
-        </button>
+        <div className={styles.list_wrap}>
+          {Array.isArray(contacts) && contacts.length === 0 && (
+            <h3 className={styles.no_contacts}>Your contact list is empty</h3>
+          )}
 
-        <div className={`${styles.acc} ${isFindOpen ? styles.opened : ''}`}>
-          <div className={styles.acc_item}>
-            <SearchBox />
-          </div>
+          {Array.isArray(contacts) && contacts.length > 0 && <ContactList />}
         </div>
+
+        {isLoading && <Loader />}
+        {isError && <Error error={isError} />}
       </div>
-
-      <div className={styles.list_wrap}>
-        {Array.isArray(contacts) && contacts.length === 0 && (
-          <h3 className={styles.no_contacts}>Your contact list is empty</h3>
-        )}
-
-        {Array.isArray(contacts) && contacts.length > 0 && <ContactList />}
-      </div>
-
-      {isLoading && <Loader />}
-      {isError && <Error error={isError} />}
     </Container>
   );
 };

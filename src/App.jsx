@@ -14,6 +14,7 @@ import Layout from './components/Layout/Layout';
 import Loader from './components/Loader/Loader';
 
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegistrationPage = lazy(() =>
@@ -21,6 +22,7 @@ const RegistrationPage = lazy(() =>
 );
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
+const MyAccountPage = lazy(() => import('./pages/MyAccountPage/MyAccountPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
     <Loader />
   ) : (
     <Layout>
+      <Toaster />
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -56,6 +59,11 @@ function App() {
         <Route
           path="/contacts"
           element={<PrivateRoute component={<ContactsPage />} />}
+        />
+
+        <Route
+          path="/account"
+          element={<PrivateRoute component={<MyAccountPage />} />}
         />
 
         <Route path="*" element={<NotFoundPage />} />

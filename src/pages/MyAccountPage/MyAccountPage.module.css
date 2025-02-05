@@ -1,8 +1,3 @@
-.account_container {
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
 .title {
   margin-bottom: 40px;
 }
@@ -65,8 +60,6 @@
 
 @media screen and (min-width: 1280px) {
   .account_container {
-    padding-top: 24px;
-    padding-bottom: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;

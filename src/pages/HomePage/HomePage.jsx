@@ -10,6 +10,7 @@ const HomePage = () => {
         src="../../../logo_128px.png"
         alt="Your Private Electronic Phone book logo"
       />
+
       <h1 className={styles.main_title}>
         Wellcome to{' '}
         <span className={styles.accent}>
@@ -23,6 +24,7 @@ const HomePage = () => {
           Our app offers you an additional private contact list that you can
           access from any device.
         </p>
+
         <p className={styles.p2}>Safe and simple!</p>
       </div>
     </Container>

@@ -104,7 +104,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 14px;
   font-weight: 500;
-  color: #ae0e0e;
+  color: #820303;
 
   &:hover {
     cursor: pointer;
@@ -113,12 +113,41 @@
 
 .form .add_btn {
   width: 90%;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
   justify-content: center;
 }
 
 .add_ico {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (min-width: 1280px) {
+  .form_title {
+    margin-bottom: 24px;
+
+    font-size: 24px;
+  }
+
+  .input_ico {
+    left: 5px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .input {
+    padding-left: 45px;
+    height: 45px;
+
+    font-size: 20px;
+  }
+
+  .input::placeholder {
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
 }

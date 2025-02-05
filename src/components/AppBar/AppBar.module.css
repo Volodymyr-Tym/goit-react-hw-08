@@ -2,21 +2,12 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  padding-top: 10px;
-  padding-bottom: 10px;
   background-color: transparent;
 }
 
 .scrolled {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-}
-
-.header_container {
-  display: flex;
-
-  gap: 16px;
-  max-height: fit-content;
 }
 
 .menu {
@@ -26,6 +17,7 @@
 .mob_menu {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 

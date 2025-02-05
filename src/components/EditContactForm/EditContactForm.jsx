@@ -8,6 +8,7 @@ import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './EditContactForm.module.css';
 import StyledBtn from '../StyledBtn/StyledBtn';
+import toast from 'react-hot-toast';
 
 const EditContactForm = ({ contact, handleCloseModal }) => {
   const INITIAL_VALUES = {
@@ -23,7 +24,9 @@ const EditContactForm = ({ contact, handleCloseModal }) => {
       number: values.number.trim(),
     };
 
-    dispatch(updateContact({ contactId: contact.id, updatedData }));
+    dispatch(updateContact({ contactId: contact.id, updatedData })).unwrap(
+      toast.success(`Data was updated`)
+    );
 
     handleCloseModal();
   };
@@ -44,6 +47,7 @@ const EditContactForm = ({ contact, handleCloseModal }) => {
               type="text"
               name="name"
               placeholder="Name"
+              autoFocus={true}
             ></Field>
           </div>
 

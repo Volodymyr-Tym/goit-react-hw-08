@@ -36,6 +36,7 @@ const MyAccountPage = () => {
           </li>
         </ul>
       </div>
+
       {isLoading && <Loader />}
       {isError && <Error error={isError} />}
     </Container>

@@ -3,6 +3,7 @@ import { BiSolidUser } from 'react-icons/bi';
 import { MdOutlinePhoneIphone } from 'react-icons/md';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { LiaUserEditSolid } from 'react-icons/lia';
+import { IoClose } from 'react-icons/io5';
 
 import { deleteContact } from '../../redux/contacts/operations';
 
@@ -11,6 +12,8 @@ import { Modal } from '@mui/material';
 import { useState } from 'react';
 import EditContactForm from '../EditContactForm/EditContactForm';
 import Container from '../Container/Container';
+import StyledBtn from '../StyledBtn/StyledBtn';
+import toast from 'react-hot-toast';
 
 const Contact = ({ user }) => {
   const { name, number, id } = user;
@@ -27,7 +30,9 @@ const Contact = ({ user }) => {
   };
 
   const onDeleteHandleClick = () => {
-    dispatch(deleteContact(id));
+    dispatch(deleteContact(id)).unwrap(
+      toast.success(`Contact "${name}" was deleted!`)
+    );
   };
 
   const [modalIsOpen, setmodalIsOpen] = useState(false);
@@ -57,7 +62,7 @@ const Contact = ({ user }) => {
           type="button"
         >
           <LiaUserEditSolid
-            className={`${styles.btn_ico} ${styles.ico_edit}`}
+            className={`${styles.btn_ico} ${styles.edit_btn_ico}`}
           />
           <span className={styles.btn_text}>Edit</span>
         </button>
@@ -68,27 +73,28 @@ const Contact = ({ user }) => {
           type="button"
         >
           <AiOutlineUserDelete
-            className={`${styles.btn_ico} ${styles.ico_delete}`}
+            className={`${styles.btn_ico} ${styles.delete_btn_ico}`}
           />
           <span className={styles.btn_text}>Delete</span>
         </button>
       </div>
 
-      {/* <div className={styles.modal}></div> */}
       <Modal
         className={styles.modal}
         open={modalIsOpen}
         onClose={handleCloseModal}
       >
         <Container className={styles.modal_container}>
-          <button
-            className={styles.close_btn}
-            type="button"
-            onClick={handleCloseModal}
-          >
-            X
-          </button>
-          <EditContactForm contact={user} handleCloseModal={handleCloseModal} />
+          <StyledBtn addClassName={styles.close_btn} onClick={handleCloseModal}>
+            <IoClose className={styles.close_btn_ico} />
+          </StyledBtn>
+
+          <div className={styles.form_wrap}>
+            <EditContactForm
+              contact={user}
+              handleCloseModal={handleCloseModal}
+            />
+          </div>
         </Container>
       </Modal>
     </>

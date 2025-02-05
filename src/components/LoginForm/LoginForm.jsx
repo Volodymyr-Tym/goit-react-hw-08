@@ -8,6 +8,8 @@ import { LoginUserSchema } from '../../utils/schemas';
 
 import styles from './LoginForm.module.css';
 import StyledBtn from '../StyledBtn/StyledBtn';
+import Error from '../Error/Error';
+import toast from 'react-hot-toast';
 
 const LoginForm = () => {
   const INITIAL_VALUES = { email: '', password: '' };
@@ -20,7 +22,15 @@ const LoginForm = () => {
       password: values.password,
     };
 
-    dispatch(login(userData));
+    dispatch(login(userData))
+      .unwrap()
+      .catch(errMsg => {
+        if (errMsg === 'Request failed with status code 400')
+          toast.custom(
+            <Error error={'This user has not been registered yet.'} login />
+          );
+        else toast.custom(<Error error={errMsg} />);
+      });
 
     actions.resetForm();
   };

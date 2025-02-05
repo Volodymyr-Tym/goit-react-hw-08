@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import toast from 'react-hot-toast';
 import { GoPerson } from 'react-icons/go';
 import { IoMailOutline } from 'react-icons/io5';
 import { SlLock } from 'react-icons/sl';
 
 import StyledBtn from '../StyledBtn/StyledBtn';
+import Error from '../Error/Error';
 
 import { register } from '../../redux/auth/operations';
 import { RegisterUserSchema } from '../../utils/schemas';
@@ -23,7 +25,15 @@ const RegistrationForm = () => {
       password: values.password,
     };
 
-    dispatch(register(formData));
+    dispatch(register(formData))
+      .unwrap()
+      .catch(errMsg => {
+        if (errMsg === 'Request failed with status code 400')
+          toast.custom(
+            <Error error={'User with this email already registered!'} />
+          );
+        else toast.custom(<Error error={errMsg} />);
+      });
 
     actions.resetForm();
   };

@@ -22,7 +22,6 @@
 }
 .message span {
   font-size: 20px;
-  text-decoration-line: underline;
 }
 
 .close {
@@ -44,4 +43,9 @@
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(17, 17, 17, 0.5);
   }
+}
+
+.link {
+  text-decoration-line: underline;
+  font-weight: 500;
 }

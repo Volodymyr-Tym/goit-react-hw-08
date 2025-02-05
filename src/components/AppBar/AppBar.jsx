@@ -31,7 +31,7 @@ const AppBar = () => {
 
   return (
     <header className={headerClass}>
-      <Container className={styles.header_container}>
+      <Container>
         <div className={styles.menu}>
           <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}

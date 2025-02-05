@@ -9,6 +9,7 @@ import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './ContactForm.module.css';
 import StyledBtn from '../StyledBtn/StyledBtn';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
   const INITIAL_VALUES = { name: '', number: '' };
@@ -21,7 +22,9 @@ const ContactForm = () => {
       number: values.number.trim(),
     };
 
-    dispatch(addContact(newContact));
+    dispatch(addContact(newContact)).unwrap(
+      toast.success(`New user "${newContact.name}" was created!`)
+    );
 
     actions.resetForm();
   };
@@ -79,6 +82,7 @@ const ContactForm = () => {
 
         <StyledBtn type="submit" addClassName={styles.add_btn}>
           <AiOutlineUserAdd className={styles.add_ico} />
+          Add contact
         </StyledBtn>
       </Form>
     </Formik>
