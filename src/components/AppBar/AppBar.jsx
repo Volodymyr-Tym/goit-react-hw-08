@@ -41,7 +41,7 @@ const AppBar = () => {
           <Link className={styles.link} to={'/'}>
             <img
               className={styles.logo}
-              src="../../../logo_128px.png"
+              src="./../../logo_128px.png"
               alt="Logo"
             />
           </Link>
