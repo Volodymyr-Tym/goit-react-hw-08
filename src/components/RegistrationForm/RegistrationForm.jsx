@@ -1,9 +1,12 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import toast from 'react-hot-toast';
+
 import { GoPerson } from 'react-icons/go';
 import { IoMailOutline } from 'react-icons/io5';
 import { SlLock } from 'react-icons/sl';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 import StyledBtn from '../StyledBtn/StyledBtn';
 import Error from '../Error/Error';
@@ -17,6 +20,10 @@ const RegistrationForm = () => {
   const INITIAL_VALUES = { name: '', email: '', password: '' };
 
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const onRegisterHandleSubmit = (values, actions) => {
     const formData = {
@@ -97,10 +104,22 @@ const RegistrationForm = () => {
           <div className={styles.input_wrap}>
             <Field
               className={styles.input}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Enter your password"
             ></Field>
+
+            <button
+              type="button"
+              className={styles.show_password_btn}
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? (
+                <AiOutlineEyeInvisible className={styles.eye_ico} />
+              ) : (
+                <AiOutlineEye className={styles.eye_ico} />
+              )}
+            </button>
           </div>
 
           <div className={styles.tooltip_gap}>

@@ -12,10 +12,9 @@
 .contact_card {
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 8px 0px 8px 8px;
-  height: 85px;
+  min-height: 85px;
   border-radius: 4px;
   overflow: hidden;
 
@@ -29,10 +28,4 @@
 
     color: #fafafa;
   }
-}
-
-@media screen and (min-width: 768px) {
-}
-
-@media screen and (min-width: 1280px) {
 }

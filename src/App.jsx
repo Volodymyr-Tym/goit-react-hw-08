@@ -1,6 +1,12 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+
+import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
+import Layout from './components/Layout/Layout';
+import Loader from './components/Loader/Loader';
 
 import { refreshUser } from './redux/auth/operations';
 import {
@@ -8,13 +14,7 @@ import {
   selectUserDataToken,
 } from './redux/auth/selectors';
 
-import PrivateRoute from './PrivateRoute';
-import RestrictedRoute from './RestrictedRoute';
-import Layout from './components/Layout/Layout';
-import Loader from './components/Loader/Loader';
-
 import './App.css';
-import { Toaster } from 'react-hot-toast';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const RegistrationPage = lazy(() =>

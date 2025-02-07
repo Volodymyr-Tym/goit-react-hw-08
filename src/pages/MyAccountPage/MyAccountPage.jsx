@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux';
+
 import Container from '../../components/Container/Container';
-import Error from '../../components/Error/Error';
 import Loader from '../../components/Loader/Loader';
-import styles from './MyAccountPage.module.css';
+import Error from '../../components/Error/Error';
 
 import {
   selectUserData,
   selectUserDataIsError,
   selectUserDataIsLoading,
 } from '../../redux/auth/selectors';
+
+import styles from './MyAccountPage.module.css';
 
 const MyAccountPage = () => {
   const user = useSelector(selectUserData);

@@ -1,14 +1,16 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import toast from 'react-hot-toast';
+
 import { GoPerson } from 'react-icons/go';
 import { CiPhone } from 'react-icons/ci';
+
+import StyledBtn from '../StyledBtn/StyledBtn';
 
 import { updateContact } from '../../redux/contacts/operations';
 import { AddContactSchema } from '../../utils/schemas';
 
 import styles from './EditContactForm.module.css';
-import StyledBtn from '../StyledBtn/StyledBtn';
-import toast from 'react-hot-toast';
 
 const EditContactForm = ({ contact, handleCloseModal }) => {
   const INITIAL_VALUES = {

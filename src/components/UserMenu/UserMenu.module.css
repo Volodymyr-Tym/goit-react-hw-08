@@ -1,13 +1,18 @@
-@media screen and (max-width: 767px) {
-  .user_menu {
-    display: none;
-  }
+.menu_wrap {
+  display: flex;
+}
+
+.user_menu {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
+  .burger_menu {
+    display: none;
+  }
+
   .user_menu {
     display: flex;
-    align-items: center;
   }
 
   .greeting {
@@ -22,7 +27,8 @@
     font-weight: 500;
     font-style: italic;
   }
-}
 
-@media screen and (min-width: 1280px) {
+  .logout_btn {
+    height: 100%;
+  }
 }

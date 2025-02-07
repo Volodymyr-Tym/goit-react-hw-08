@@ -36,6 +36,7 @@
   margin-top: 28px;
   text-transform: uppercase;
 }
+
 @media screen and (min-width: 768px) {
   .logo {
     margin-bottom: 48px;
@@ -57,16 +58,10 @@
 
   .p2 {
     margin-top: 36px;
-    text-transform: uppercase;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .home_container {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
   .logo {
     width: 180px;
     height: 180px;

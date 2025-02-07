@@ -8,10 +8,12 @@ const Error = ({ error, login = null }) => {
   return (
     <div className={styles.wrap}>
       <p className={styles.title}>Oooops something went wrong...</p>
+
       <p className={styles.message}>
         {' '}
         Reason: <span>{error}</span>
       </p>
+
       <p className={styles.message}>Please check details and try again</p>
 
       {login && (

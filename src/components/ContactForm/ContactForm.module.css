@@ -48,13 +48,13 @@
   border: none;
   border-radius: 4px;
   background-color: transparent;
+  transform-origin: center;
 
   font-family: 'Roboto Mono', monospace;
   font-size: 18px;
   color: #fafafa;
 
   transition: background-color 250ms linear;
-  transform-origin: center;
 
   &:hover {
     outline: transparent;
@@ -77,8 +77,9 @@
   background-color: #000000;
   border-radius: 0;
   transform: scaleX(1);
-  transition: transform 0.3s ease;
   transform-origin: center;
+
+  transition: transform 0.3s ease;
 }
 
 .input_wrap:focus-within::after {
@@ -102,6 +103,7 @@
   padding: 2px 4px;
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 0.1);
+
   font-size: 14px;
   font-weight: 500;
   color: #820303;

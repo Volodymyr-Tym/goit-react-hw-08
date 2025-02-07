@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   row-gap: 8px;
+  width: 80%;
 }
 
 .info_wrap {
   display: flex;
   align-items: center;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+}
+
+.numb {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
 }
 
 .ico {
@@ -18,9 +24,10 @@
 }
 
 .text {
-  font-size: 18px;
   max-width: 210px;
-  text-wrap: nowrap;
+
+  text-align: start;
+  font-size: 18px;
 }
 
 .name {
@@ -52,11 +59,12 @@
   font-weight: 500;
 
   transition: all 250ms linear, max-width 350ms linear;
+
   &:hover,
   &:focus {
     outline: transparent;
 
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     max-width: 100%;
     justify-content: center;
 
@@ -66,12 +74,24 @@
 
 .delete_btn {
   background-color: rgba(123, 0, 0, 0.5);
+
   color: #a10707;
+
+  &:hover,
+  &:focus {
+    color: rgb(255 101 101);
+  }
 }
 
 .edit_btn {
   background-color: rgba(0, 82, 123, 0.5);
+
   color: #073da1;
+
+  &:hover,
+  &:focus {
+    color: rgb(101 101 249);
+  }
 }
 
 .btn_ico {
@@ -157,6 +177,12 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .ico {
+    margin-right: 8px;
+    width: 35px;
+    height: 35px;
+  }
+
   .text {
     font-size: 20px;
     max-width: 500px;

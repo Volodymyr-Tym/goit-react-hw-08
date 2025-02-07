@@ -1,20 +1,28 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import toast from 'react-hot-toast';
+
 import { IoMailOutline } from 'react-icons/io5';
 import { SlLock } from 'react-icons/sl';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
+import StyledBtn from '../StyledBtn/StyledBtn';
+import Error from '../Error/Error';
 
 import { login } from '../../redux/auth/operations';
 import { LoginUserSchema } from '../../utils/schemas';
 
 import styles from './LoginForm.module.css';
-import StyledBtn from '../StyledBtn/StyledBtn';
-import Error from '../Error/Error';
-import toast from 'react-hot-toast';
 
 const LoginForm = () => {
   const INITIAL_VALUES = { email: '', password: '' };
 
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const onLoginHandleSubmit = (values, actions) => {
     const userData = {
@@ -73,10 +81,22 @@ const LoginForm = () => {
           <div className={styles.input_wrap}>
             <Field
               className={styles.input}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Password"
             ></Field>
+
+            <button
+              type="button"
+              className={styles.show_password_btn}
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? (
+                <AiOutlineEyeInvisible className={styles.eye_ico} />
+              ) : (
+                <AiOutlineEye className={styles.eye_ico} />
+              )}
+            </button>
           </div>
 
           <div className={styles.tooltip_gap}>

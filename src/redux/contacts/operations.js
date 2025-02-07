@@ -12,7 +12,6 @@ export const getContacts = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const data = await getAllContacts(_);
-      console.log('data->', data);
 
       return data;
     } catch (error) {
@@ -27,8 +26,6 @@ export const addContact = createAsyncThunk(
     try {
       const data = await postNewContact(NewContact);
 
-      console.log('NewContact->data->', data);
-
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -42,8 +39,6 @@ export const deleteContact = createAsyncThunk(
     try {
       const data = await deleteContactById(contactId);
 
-      console.log('delContact->data->', data);
-
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -56,8 +51,6 @@ export const updateContact = createAsyncThunk(
   async ({ contactId, updatedData }, thunkApi) => {
     try {
       const data = await updateContactById(contactId, updatedData);
-
-      console.log('UpdatedContact->data->', data);
 
       return data;
     } catch (error) {

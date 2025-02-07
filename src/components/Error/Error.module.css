@@ -9,7 +9,7 @@
   border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: rgb(250, 94, 94);
+  background-color: rgb(226 42 42);
 }
 
 .title {
@@ -20,6 +20,7 @@
 .message {
   font-size: 18px;
 }
+
 .message span {
   font-size: 20px;
 }
