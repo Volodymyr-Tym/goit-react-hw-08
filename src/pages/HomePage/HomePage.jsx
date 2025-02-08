@@ -7,7 +7,7 @@ const HomePage = () => {
     <Container className={styles.home_container}>
       <img
         className={styles.logo}
-        src="/src/images/logo_128px.png"
+        src="/images/logo_128px.png"
         alt="Your Private Electronic Phone book logo"
       />
 

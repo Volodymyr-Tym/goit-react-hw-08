@@ -13,11 +13,7 @@ const Navigation = () => {
   return (
     <nav>
       <Link className={styles.mob_home_link} to={'/'}>
-        <img
-          className={styles.logo}
-          src="/src/images/logo_128px.png"
-          alt="Logo"
-        />
+        <img className={styles.logo} src="/images/logo_128px.png" alt="Logo" />
       </Link>
 
       <div className={styles.menu_wrap}>
